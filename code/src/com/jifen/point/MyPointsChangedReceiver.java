@@ -62,7 +62,7 @@ public class MyPointsChangedReceiver extends PointsReceiver {
                     public void onPointFetchSuccess(int current) {
                         Config.LOGD("[[onPointFetchSuccess]] current point = " + current + " ::: try to upload the point >>>>>");
                         
-                        int currentAddPoint = current + finalEarnPoint;
+                        final int currentAddPoint = current + finalEarnPoint;
                         Utils.asyncUploadPoint(arg0, SettingManager.getInstance().getUserName(), currentAddPoint,
                                 new PointUploadListener() {
 
@@ -76,7 +76,7 @@ public class MyPointsChangedReceiver extends PointsReceiver {
 
                                         Message msg = Message.obtain();
                                         msg.what = UPLOAD_POINT_SUCCESS;
-                                        msg.arg1 = curPoint;
+                                        msg.arg1 = currentAddPoint;
                                         mHandler.sendMessage(msg);
                                     }
 
