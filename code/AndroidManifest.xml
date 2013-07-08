@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.jifen.point"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="10"
+        android:targetSdkVersion="17" />
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="com.android.launcher.permission.INSTALL_SHORTCUT" />
+
+    <application
+        android:name="com.jifen.point.JiFenBaoApplication"
+        android:allowBackup="true"
+        android:icon="@drawable/icon"
+        android:label="@string/app_name"
+        android:theme="@style/LeftOutRightInActivityAnimationNoTitleTheme" >
+        <activity
+            android:name="com.jifen.point.MainActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme_ActionBar_Style"
+            android:windowSoftInputMode="stateAlwaysHidden" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.jifen.point.ContentActivity"
+            android:configChanges="keyboard|keyboardHidden|orientation"
+            android:theme="@style/Theme_ActionBar_Style"
+            android:windowSoftInputMode="stateAlwaysHidden" >
+        </activity>
+
+        <meta-data
+            android:name="UMENG_APPKEY"
+            android:value="51d6a52956240b6052005e2c" >
+        </meta-data>
+        <meta-data
+            android:name="UMENG_CHANNEL"
+            android:value="@string/umeng_channel" />
+
+        <!-- youmi usage -->
+        <meta-data
+            android:name="YOUMI_CHANNEL"
+            android:value="10020" />
+
+        <activity
+            android:name="net.youmi.android.AdBrowser"
+            android:configChanges="keyboard|keyboardHidden|orientation"
+            android:theme="@android:style/Theme.Light.NoTitleBar" >
+        </activity>
+
+        <service
+            android:name="net.youmi.android.AdService"
+            android:exported="false" >
+        </service>
+
+        <receiver android:name="net.youmi.android.AdReceiver" >
+            <intent-filter>
+                <action android:name="android.intent.action.PACKAGE_ADDED" />
+                <action android:name="android.intent.action.PACKAGE_INSTALL" />
+
+                <data android:scheme="package" />
+            </intent-filter>
+        </receiver>
+        <receiver
+            android:name="net.youmi.android.offers.OffersReceiver"
+            android:exported="false" >
+        </receiver>
+
+        <!-- umeng auto update -->
+        <service
+            android:name="com.umeng.common.net.DownloadingService"
+            android:exported="true"
+            android:process=":DownloadingService" >
+        </service>
+
+        <!-- point changed receiver -->
+        <receiver
+            android:name="com.jifen.point.MyPointsChangedReceiver"
+            android:exported="false" >
+            <intent-filter>
+                <action android:name="ep_85c4a46bf61d61b9" />
+                <action android:name="vp_85c4a46bf61d61b9" />
+            </intent-filter>
+        </receiver>
+    </application>
+
+</manifest>

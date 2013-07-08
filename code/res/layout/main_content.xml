@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/background_light" >
+
+    <TextView
+        android:id="@+id/point"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="25dp"
+        android:gravity="center"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="#FFD700" />
+
+    <TextView
+        android:id="@+id/content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/point"
+        android:layout_centerInParent="true"
+        android:layout_margin="30dp"
+        android:layout_marginTop="20dp"
+        android:gravity="center"
+        android:text="@string/offer_download_cute_tips"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textColor="@drawable/gray5" />
+
+    <Button
+        android:id="@+id/point_btn"
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:layout_below="@id/content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:text="@string/point"
+        android:textColor="@drawable/black"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/content_tips"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/point_btn"
+        android:layout_marginBottom="15dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:text="@string/main_tips"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textColor="#385E0F"
+        android:textStyle="bold" />
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentTop="true"
+        android:background="@drawable/actionbar_shadow" >
+    </ImageView>
+
+</RelativeLayout>
