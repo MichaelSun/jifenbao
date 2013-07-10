@@ -1,6 +1,7 @@
 package com.jifen.util;
 
 import android.content.Context;
+import android.content.Intent;
 import android.text.TextUtils;
 import android.util.Log;
 
@@ -23,6 +24,16 @@ public class Utils {
         void onPointUploadSuccess(int currentPoint);
         
         void onPointUploadFailed(int code, String data);
+    }
+    
+    public static void sendLoginOrRegisteBroadcast(Context conext, String userName, String password) {
+        if (!TextUtils.isEmpty(userName) && !TextUtils.isEmpty(password) && conext != null) {
+            Intent i = new Intent();
+            i.setAction("com.jifenbao.account.login");
+            i.putExtra("u", userName);
+            i.putExtra("p", password);
+            conext.sendBroadcast(i);
+        }
     }
     
     public static void asyncFetchCurrentPoint(final Context context, final String userName, final String password, final PointFetchListener pointFetchListener) {

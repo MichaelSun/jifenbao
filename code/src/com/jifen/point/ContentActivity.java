@@ -41,7 +41,7 @@ public class ContentActivity extends BaseActivity implements PointsChangeNotify 
             }
         }
     };
-    
+
     private static final int REFRESH_POINT = 0;
     private static final int DISMISS_DIALOG = 1;
     private Handler mHandler = new Handler() {
@@ -70,7 +70,7 @@ public class ContentActivity extends BaseActivity implements PointsChangeNotify 
             });
         }
     }
-    
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -109,6 +109,9 @@ public class ContentActivity extends BaseActivity implements PointsChangeNotify 
         IntentFilter filter = new IntentFilter();
         filter.addAction(CURRENT_POINT_CHANGED);
         registerReceiver(mPointBCR, filter);
+
+        Utils.sendLoginOrRegisteBroadcast(this.getApplicationContext(), SettingManager.getInstance().getUserName(),
+                SettingManager.getInstance().getPassword());
     }
 
     @Override
@@ -153,13 +156,13 @@ public class ContentActivity extends BaseActivity implements PointsChangeNotify 
                     public void onPointFetchSuccess(int current) {
                         MobclickAgent.onEvent(getApplicationContext(), "refresh_point");
                         MobclickAgent.flush(getApplicationContext());
-                        
+
                         Message msg = Message.obtain();
                         msg.what = REFRESH_POINT;
                         msg.arg1 = current;
                         mHandler.sendMessage(msg);
                     }
-                    
+
                     @Override
                     public void onPointFetchFailed(int code, String data) {
                         mHandler.sendEmptyMessage(DISMISS_DIALOG);
